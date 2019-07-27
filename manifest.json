@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "BR Generator",
+    "default_locale": "pt_BR",
+    "version": "1.0",
+    "description": "Adds a context menu to generate brasilizan information",
+    "icons": {
+        "48": "icons/flask-solid.svg"
+    },
+    "permissions": [
+        "menus",
+        "contextMenus",
+        "<all_urls>"
+    ],
+    "background": {
+        "page": "./background.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content-script.js"
+            ]
+        }
+    ]
+}

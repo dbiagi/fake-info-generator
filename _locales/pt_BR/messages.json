@@ -1,0 +1,16 @@
+{
+    "extensionName": {
+        "message": "Generator",
+        "description": "Name of the extension."
+    },
+    "generate": {
+        "message": "Gerar $type$",
+        "description": "Gera a informção do tipo do placeholder",
+        "placeholders": {
+            "type": {
+                "content": "$1",
+                "example": "CNPJ"
+            }
+        }
+    }
+}

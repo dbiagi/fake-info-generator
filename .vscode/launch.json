@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Mocha Tests",
+            "program": "${workspaceRoot}/node_modules/.bin/mocha",
+            "args": [
+                "--require",
+                "@babel/register",
+                "--no-timeouts",
+                "--colors",
+                "tests/**/*.Spec.js"
+            ],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "sourceMaps": true
+        }
+    ]
+}
