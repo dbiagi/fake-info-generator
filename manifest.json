@@ -9,8 +9,7 @@
     },
     "permissions": [
         "menus",
-        "contextMenus",
-        "<all_urls>"
+        "clipboardRead"
     ],
     "background": {
         "page": "./background.html"
@@ -21,7 +20,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "content-script.js"
+                "./src/ContentScript.js"
             ]
         }
     ]

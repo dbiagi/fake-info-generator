@@ -1,55 +1,50 @@
-import { MenuAction } from "./MenuAction.js";
-
-export const GENERATE_CPF = 'generate-cpf'
-export const GENERATE_CNPJ = 'generate-cnpj'
+import { error } from "../Logger.js"
+import { BaseMenuAction } from "./BaseMenuAction.js";
 
 export class ContextMenu {
 
-    constructor(menuContextApi, actions) {
-        this.menuContextApi = menuContextApi
-        this.actions = actions
-    }
-
-    set onGenerateCpfClicked(callback) {
-        this.cpfClicked = callback
-    }
-
-    set onGenerateCnpjClicked(callback) {
-        this.cnpjClicked = callback
+    constructor(contextMenuApi, menus) {
+        this.contextMenuApi = contextMenuApi
+        this.menus = menus
     }
 
     init() {
-        this.registerMenus(this.menuContextApi)
-        this.registerMenuEvents(this.menuContextApi)
+        this.instanciateMenus()
+        this.registerMenus()
+        this.registerMenuEvents()
+    }
+
+    instanciateMenus() {
+        let instances = this.menus.map((menuClass) => {
+            let instance = new menuClass
+
+            return instance instanceof BaseMenuAction ? instance : null
+        })
+
+        this.menus = instances.filter((val) => val)
     }
 
     registerMenuEvents() {
         let self = this
 
-        this.menuContextApi.onClicked.addListener(function (info, tab) {
-            switch (info.menuItemId) {
-                case GENERATE_CPF:
-                    self.cpfClicked(tab)
-                    break
-
-                case GENERATE_CNPJ:
-                    self.cnpjClicked(tab)
-                    break
+        this.contextMenuApi.onClicked.addListener(function (info, tab) {
+            if (!(info.menuItemId in self.menus)) {
+                return error(`Action id ${info.menuItemId} not registred`)
             }
+
+            self.menus[info.menuItemId].doAction(tab)
         });
     }
 
     registerMenus() {
-        this.menuContextApi.create({
-            id: GENERATE_CPF,
-            title: browser.i18n.getMessage("generate", "CPF"),
-            contexts: ["all"]
-        })
+        let create = this.contextMenuApi.create
 
-        this.menuContextApi.create({
-            id: GENERATE_CNPJ,
-            title: browser.i18n.getMessage("generate", "CNPJ"),
-            contexts: ["all"]
+        this.menus.forEach((menu) => {
+            create({
+                id: menu.id,
+                title: menu.title,
+                contexts: menu.contexts,
+            })
         })
     }
 }
