@@ -9,19 +9,30 @@ export class ContextMenu {
     }
 
     init() {
-        this.instanciateMenus()
-        this.registerMenus()
+        this.createMenuActions()
         this.registerMenuEvents()
     }
 
-    instanciateMenus() {
-        let instances = this.menus.map((menuClass) => {
+    createMenuActions() {
+        let indexedMenu = {}
+
+        this.menus.forEach((menuClass) => {
             let instance = new menuClass
 
-            return instance instanceof BaseMenuAction ? instance : null
+            if (!(instance instanceof BaseMenuAction)) {
+                return null
+            }
+
+            this.contextMenuApi.create({
+                id: menuClass.id,
+                title: instance.title,
+                contexts: instance.contexts,
+            })
+
+            indexedMenu[menuClass.id] = instance
         })
 
-        this.menus = instances.filter((val) => val)
+        this.menus = indexedMenu
     }
 
     registerMenuEvents() {
@@ -34,17 +45,5 @@ export class ContextMenu {
 
             self.menus[info.menuItemId].doAction(tab)
         });
-    }
-
-    registerMenus() {
-        let create = this.contextMenuApi.create
-
-        this.menus.forEach((menu) => {
-            create({
-                id: menu.id,
-                title: menu.title,
-                contexts: menu.contexts,
-            })
-        })
     }
 }
