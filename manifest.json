@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "BR Generator",
+    "name": "Fake Info Generator",
     "default_locale": "pt_BR",
     "version": "1.0",
     "description": "Adds a context menu to generate brasilizan information",
@@ -9,19 +9,16 @@
     },
     "permissions": [
         "menus",
-        "clipboardRead"
+        "clipboardRead",
+        "clipboardWrite"
     ],
-    "background": {
-        "page": "./background.html"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "./src/ContentScript.js"
-            ]
-        }
-    ]
+    "browser_action": {
+        "default_icon": {
+            "38": "icons/flask-solid.svg",
+            "48": "icons/flask-solid.svg"
+        },
+        "default_title": "Fake Info",
+        "default_popup": "popup/popup.html",
+        "browser_style": true
+    }
 }

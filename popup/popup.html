@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="milligram.min.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div id="popup-wrapper">
+
+        <div class="popup-title container">
+            <h3>Fake Info Generator</h3>
+        </div>
+
+        <div>
+            <div class="row">
+                <select name="selDocumentType" id="selDocumentType">
+                    <option>Select</option>
+                    <optgroup label="Documents">
+                        <option value="document-cpf">CPF</option>
+                        <option value="document-cnpj">CNPJ</option>
+                    </optgroup>
+                    <optgroup label="CreditCard">
+                        <option value="creditcard-random">Random Flag</option>
+                        <option value="creditcard-visa">Visa</option>
+                        <option value="creditcard-mastercard">Mastercard</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <input type="text" name="result" id="result" readonly>
+                </div>
+                <div class="column">
+                    <button id="btnCopy" class="button">Copy</button>
+                </div>
+            </div>
+            <div class="row">
+                <button id="btnGenerate" class="button">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../src/Popup.js"></script>
+    <script>
+        let popup = new Popup()
+        popup.init()
+    </script>
+</body>
+
+</html>
