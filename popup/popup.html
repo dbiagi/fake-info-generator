@@ -23,7 +23,7 @@
                         <option value="document-cnpj">CNPJ</option>
                     </optgroup>
                     <optgroup label="CreditCard">
-                        <option value="creditcard-random">Random Flag</option>
+                        <option value="creditcard-random">Random</option>
                         <option value="creditcard-visa">Visa</option>
                         <option value="creditcard-mastercard">Mastercard</option>
                     </optgroup>
@@ -36,6 +36,10 @@
                 <div class="column">
                     <button id="btnCopy" class="button">Copy</button>
                 </div>
+                <div class="column">
+                    <label for="checkFormat">Format?</label>
+                    <input type="checkbox" name="checkFormat" id="checkFormat">
+                </div>
             </div>
             <div class="row">
                 <button id="btnGenerate" class="button">Generate</button>
@@ -43,11 +47,7 @@
         </div>
     </div>
 
-    <script type="module" src="../src/Popup.js"></script>
-    <script>
-        let popup = new Popup()
-        popup.init()
-    </script>
+    <script type="module" src="popup.js"></script>
 </body>
 
 </html>

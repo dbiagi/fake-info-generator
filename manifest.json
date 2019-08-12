@@ -5,7 +5,7 @@
     "version": "1.0",
     "description": "Adds a context menu to generate brasilizan information",
     "icons": {
-        "48": "icons/flask-solid.svg"
+        "48": "icons/document.svg"
     },
     "permissions": [
         "menus",
@@ -14,10 +14,10 @@
     ],
     "browser_action": {
         "default_icon": {
-            "38": "icons/flask-solid.svg",
-            "48": "icons/flask-solid.svg"
+            "38": "icons/document.svg",
+            "48": "icons/document.svg"
         },
-        "default_title": "Fake Info",
+        "default_title": "Fake Info Generator",
         "default_popup": "popup/popup.html",
         "browser_style": true
     }
