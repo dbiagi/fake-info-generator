@@ -8,14 +8,28 @@ const CREDITCARD_VISA = "creditcard-visa"
 const CREDITCARD_MASTER = "creditcard-master"
 
 export class Popup {
-    constructor(resultElement, selDocumentType, btnGenerate, checkFormat) {
+    constructor() {
         this.currentDocument = null
         this.format = false
-        this.resultElement = document.querySelector(`#${resultElement}`)
+        this.resultElement = document.querySelector("#resultInput")
 
-        document.querySelector(`#${selDocumentType}`).addEventListener("change", (e) => this.changeDocumentType(e))
-        document.querySelector(`#${btnGenerate}`).addEventListener("click", () => this.generate())
-        document.querySelector(`#${checkFormat}`).addEventListener("change", (e) => this.format = e.target.checked)
+        this.registerEvents()
+    }
+
+    registerEvents() {
+        document.querySelector("#selDocumentType").addEventListener("change", (e) => this.changeDocumentType(e))
+        document.querySelector("#btnGenerate").addEventListener("click", () => this.generate())
+        document.querySelector("#checkFormat").addEventListener("change", (e) => this.format = e.target.checked)
+        document.querySelector("#btnCopy").addEventListener("click", _ => this.copy())
+    }
+
+    copy() {
+        if (!this.resultElement.value) {
+            return
+        }
+
+        this.resultElement.select();
+        document.execCommand("copy");
     }
 
     changeDocumentType(e) {

@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #9b4dca;
+    --secondary-color: whitesmoke;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.popup-title {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn.btn-primary {
+    background-color: var(--primary-color);
+}

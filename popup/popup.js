@@ -1,3 +1,3 @@
-import {Popup} from "../src/Popup.js"
+import { Popup } from "../src/Popup.js"
 
-let popup = new Popup("result", "selDocumentType", "btnGenerate", "checkFormat")
+let popup = new Popup()
