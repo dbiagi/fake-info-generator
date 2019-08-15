@@ -1,0 +1,24 @@
+{
+    "appName": {
+        "message": "Fake Info Generator",
+        "description": "The name of the application"
+    },
+    "appShortName": {
+        "message": "Fake Info Gen",
+        "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+    },
+    "appDescription": {
+        "message": "Generate fake information like Cpf, Cnpj and creditcard to tests purpose.",
+        "description": "The description of the application"
+    },
+    "generate": {
+        "message": "Generate $type$",
+        "description": "Generate document placeholder",
+        "placeholders": {
+            "type": {
+                "content": "$1",
+                "example": "CNPJ"
+            }
+        }
+    }
+}
