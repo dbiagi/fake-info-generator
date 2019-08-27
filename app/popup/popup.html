@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="../styles/popup.css">
 </head>
 
 <body>
@@ -18,13 +18,22 @@
                 <select class="form-control" name="selDocumentType" id="selDocumentType">
                     <option>Select</option>
                     <optgroup label="Documents">
-                        <option value="document-cpf">CPF</option>
-                        <option value="document-cnpj">CNPJ</option>
+                        <option value="document_cpf">CPF</option>
+                        <option value="document_cnpj">CNPJ</option>
                     </optgroup>
                     <optgroup label="CreditCard">
-                        <option value="creditcard-random">Random</option>
-                        <option value="creditcard-visa">Visa</option>
-                        <option value="creditcard-mastercard">Mastercard</option>
+                        <option value="creditcard_random">Random</option>
+                        <option value="creditcard_american_express">American Express</option>
+                        <option value="creditcard_dinersclub_carte_blanche">Diners Club - Carte Blanche</option>
+                        <option value="creditcard_dinersclub_international">Diners Club - Internacional</option>
+                        <option value="creditcard_dinersclub_usa_canada">Diners Club - US & Canada</option>
+                        <option value="creditcard_discover">Discover</option>
+                        <option value="creditcard_instapayment">InstaPayment</option>
+                        <option value="creditcard_jcb">JCB</option>
+                        <option value="creditcard_maestro">Maestro</option>
+                        <option value="creditcard_mastercard">Mastercard</option>
+                        <option value="creditcard_visa">Visa</option>
+                        <option value="creditcard_visa_electron">Visa Electron</option>
                     </optgroup>
                 </select>
             </div>
@@ -49,6 +58,7 @@
     </div>
 
     <script type="module" src="../scripts/popup.js"></script>
+
 </body>
 
 </html>

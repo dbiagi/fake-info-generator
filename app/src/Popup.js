@@ -1,23 +1,21 @@
 import { CnpjGenerator } from "./CpfCnpj/CnpjGenerator.js"
 import { CpfGenerator } from "./CpfCnpj/CpfGenerator.js"
+import { Generator as CreditcardGenerator,  } from "./Creditcard/Generator";
 
-const DOCUMENT_CNPJ = "document-cnpj"
-const DOCUMENT_CPF = "document-cpf"
-const CREDITCARD_RANDOM = "creditcard-random"
-const CREDITCARD_VISA = "creditcard-visa"
-const CREDITCARD_MASTER = "creditcard-master"
+const DOCUMENT_CNPJ = "document_cnpj"
+const DOCUMENT_CPF = "document_cpf"
 
 export class Popup {
     constructor() {
         this.currentDocument = null
         this.format = false
         this.resultElement = document.querySelector("#resultInput")
-
+        this.selDocumentType = document.querySelector("#selDocumentType")
         this.registerEvents()
     }
 
     registerEvents() {
-        document.querySelector("#selDocumentType").addEventListener("change", (e) => this.changeDocumentType(e))
+        this.selDocumentType.addEventListener("change", (e) => this.changeDocumentType(e))
         document.querySelector("#btnGenerate").addEventListener("click", () => this.generate())
         document.querySelector("#checkFormat").addEventListener("change", (e) => this.format = e.target.checked)
         document.querySelector("#btnCopy").addEventListener("click", _ => this.copy())
@@ -37,25 +35,41 @@ export class Popup {
     }
 
     generate() {
-        let generator = this.getGenerator()
-
-        if (generator === null) {
+        if (!this.currentDocument) {
             return
         }
 
-        this.resultElement.value = generator.generate(this.format)
+        let result = null
+
+        if (/^document_/.test(this.currentDocument)) {
+            result = this.generateDocument()
+        }
+        
+        if (/^creditcard_/.test(this.currentDocument)) {
+            const flag = this.currentDocument.replace("creditcard_", "")
+
+            result = this.generateCreditcard(flag)
+        }
+
+        this.resultElement.value = result
     }
 
-    getGenerator() {
+    generateDocument() {
         switch (this.currentDocument) {
             case DOCUMENT_CNPJ:
-                return new CnpjGenerator
+                return (new CnpjGenerator()).generate(this.format)
 
             case DOCUMENT_CPF:
-                return new CpfGenerator()
+                return (new CpfGenerator()).generate(this.format)
 
             default:
                 return null
         }
+    }
+
+    generateCreditcard(flag, format) {
+        const generator = new CreditcardGenerator()
+        
+        return generator.generate(flag, this.format)
     }
 }

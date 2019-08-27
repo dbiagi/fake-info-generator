@@ -14,7 +14,7 @@
                 "@babel/register",
                 "--no-timeouts",
                 "--colors",
-                "tests/**/*.Spec.js"
+                "app/tests/**/*.Spec.js"
             ],
             "cwd": "${workspaceRoot}",
             "runtimeArgs": [

@@ -4,7 +4,7 @@ import { CpfGenerator } from "../src/CpfCnpj/CpfGenerator"
 describe("Test CpfGenerator", () => {
     describe("Test generate", () => {
         let g = new CpfGenerator
-        let pattern = /[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}/
+        let pattern = /^([0-9]{3}\.?){3}\-[0-9]{2}$/
         it(`When formated must match the pattern ${pattern}`, () => {
             assert.match(g.generate(true), pattern)
         })

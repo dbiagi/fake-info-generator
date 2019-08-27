@@ -10,15 +10,5 @@
     "appDescription": {
         "message": "Generate fake information like Cpf, Cnpj and creditcard to tests purpose.",
         "description": "The description of the application"
-    },
-    "generate": {
-        "message": "Generate $type$",
-        "description": "Generate document placeholder",
-        "placeholders": {
-            "type": {
-                "content": "$1",
-                "example": "CNPJ"
-            }
-        }
     }
 }

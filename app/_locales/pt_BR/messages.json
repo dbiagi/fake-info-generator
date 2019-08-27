@@ -10,15 +10,5 @@
     "appDescription": {
         "message": "Gera informação falsa como Cpf, Cnpj e Cartão de Crédito para testes.",
         "description": "The description of the application"
-    },
-    "generate": {
-        "message": "Gerar $type$",
-        "description": "Generate document placeholder",
-        "placeholders": {
-            "type": {
-                "content": "$1",
-                "example": "CNPJ"
-            }
-        }
     }
 }

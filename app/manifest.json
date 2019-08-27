@@ -16,8 +16,8 @@
     },
     "browser_action": {
         "default_icon": {
-            "38": "icons/document-icon.svg",
-            "48": "icons/document-icon.svg"
+            "38": "images/document-icon.svg",
+            "48": "images/document-icon.svg"
         },
         "default_title": "__MSG_appName__",
         "default_popup": "popup/popup.html",
