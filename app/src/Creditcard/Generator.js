@@ -67,7 +67,7 @@ export class Generator {
 
         let sum = 0
 
-        reversedNumbers.forEach(n => sum += parseInt(n))
+        reversedNumbers.forEach(n => sum += n)
 
         return sum % 10
     }

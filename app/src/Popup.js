@@ -68,6 +68,8 @@ export class Popup {
     }
 
     generateCreditcard(flag, format) {
+        flag = flag === 'random' ? "visa" : flag
+        
         const generator = new CreditcardGenerator()
         
         return generator.generate(flag, this.format)
