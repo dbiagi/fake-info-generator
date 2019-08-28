@@ -69,7 +69,7 @@ export class Generator {
 
         reversedNumbers.forEach(n => sum += n)
 
-        return sum % 10
+        return 10 - (sum % 10)
     }
 }
 
