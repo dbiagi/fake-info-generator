@@ -7,12 +7,8 @@
     "default_locale": "pt_BR",
     "icons": {
         "16": "images/document-icon.svg",
+        "48": "images/document-icon.svg",
         "128": "images/document-icon.svg"
-    },
-    "background": {
-        "scripts": [
-            "scripts/background.js"
-        ]
     },
     "browser_action": {
         "default_icon": {
