@@ -3,9 +3,11 @@
 # fake-info-generator
 
 ## About
+
 Webextension to generate fake information like Credicards and CPF/CNPJ.
 
-Obviously the credicard won't work. They are for testing purposes only. Without a valid owner name, an expiration date and a valid CVV code, it can't be used for real transactions. 
+Obviously the credicard won't work. They are for testing purposes only. Without a valid owner name, an expiration date and a valid CVV code, it can't be used for real transactions. The algorithm is highly available on the internet and is known as [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm).
+
 
 The purpose of this extension is to test form validation strategies on staging environments.
 
@@ -15,9 +17,7 @@ This extension uses the [webextension-toolbox](https://github.com/webextension-t
 
 ## Links
 
-### Chrome Store
-
-### Mozilla Addons 
+### [Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/fake-info-generator/)
 
 ## How to build
 
@@ -32,7 +32,8 @@ Run unit tests
 npm test
 ```
 
-Generate the extension package
+Generate the extension package by vendor (firefox | chrome | edge | opera)
 ```sh
 npm run build --vendor VENDOR_NAME
 ```
+
