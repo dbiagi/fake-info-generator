@@ -8,17 +8,28 @@ const DOCUMENT_CPF = "document_cpf"
 export class Popup {
     constructor() {
         this.currentDocument = null
-        this.format = false
         this.resultElement = document.querySelector("#resultInput")
         this.selDocumentType = document.querySelector("#selDocumentType")
         this.registerEvents()
+        this.getState()
+    }
+
+    getState() {
+        browser.storage.local.get('current_doc').then(item => {
+            if (!item) {
+                return
+            }
+
+            if (item.current_doc) {
+                this.selDocumentType.value = item.current_doc
+                this.currentDocument = item.current_doc
+            }
+        })
     }
 
     registerEvents() {
         this.selDocumentType.addEventListener("change", (e) => this.changeDocumentType(e))
         document.querySelector("#btnGenerate").addEventListener("click", () => this.generate())
-        document.querySelector("#checkFormat").addEventListener("change", (e) => this.format = e.target.checked)
-        document.querySelector("#btnCopy").addEventListener("click", _ => this.copy())
     }
 
     copy() {
@@ -27,11 +38,14 @@ export class Popup {
         }
 
         this.resultElement.select();
+
         document.execCommand("copy");
     }
 
     changeDocumentType(e) {
         this.currentDocument = e.target.value
+
+        browser.storage.local.set({current_doc: this.currentDocument})
     }
 
     generate() {
@@ -52,26 +66,28 @@ export class Popup {
         }
 
         this.resultElement.value = result
+
+        this.copy()
     }
 
     generateDocument() {
         switch (this.currentDocument) {
             case DOCUMENT_CNPJ:
-                return (new CnpjGenerator()).generate(this.format)
+                return (new CnpjGenerator()).generate()
 
             case DOCUMENT_CPF:
-                return (new CpfGenerator()).generate(this.format)
+                return (new CpfGenerator()).generate()
 
             default:
                 return null
         }
     }
 
-    generateCreditcard(flag, format) {
+    generateCreditcard(flag) {
         flag = flag === 'random' ? "visa" : flag
         
         const generator = new CreditcardGenerator()
         
-        return generator.generate(flag, this.format)
+        return generator.generate(flag)
     }
 }

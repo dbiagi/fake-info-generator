@@ -2,7 +2,7 @@
     "name": "__MSG_appName__",
     "short_name": "__MSG_appShortName__",
     "description": "__MSG_appDescription__",
-    "version": "0.0.1",
+    "version": "1.0.1",
     "manifest_version": 2,
     "default_locale": "pt_BR",
     "icons": {
@@ -18,5 +18,8 @@
         "default_title": "__MSG_appName__",
         "default_popup": "popup/popup.html",
         "browser_style": true
-    }
+    },
+    "permissions": [
+        "storage"
+    ]
 }
