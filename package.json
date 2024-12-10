@@ -23,6 +23,6 @@
         "webextension-toolbox": "latest"
     },
     "dependencies": {
-        "bootstrap": "^4.4.1"
+        "bootstrap": "^5.0.1"
     }
 }
